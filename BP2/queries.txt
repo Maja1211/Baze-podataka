@@ -1,0 +1,30 @@
+# TEST 1
+SELECT use_index=1 WHERE D1 = x1 AND D2 = y2 AGG SUM Fact1
+
+# TEST 2
+SELECT use_index=0 WHERE D2 = y3 OR D3 = z2
+
+SELECT use_index=0 WHERE D2 = y5 AGG COUNT Fact3
+
+# TEST 3
+DELETE WHERE D1 = x1
+
+# Provjera nakon brisanja
+SELECT use_index=1 WHERE D1 = x1
+
+# TEST 4 agregatne funkcije
+SELECT use_index=1 WHERE D2 = y3 AGG MAX Fact2
+
+SELECT use_index=1 WHERE D3 = z2 AGG MIN Fact3
+
+SELECT use_index=0 WHERE D1 = x2 AGG AVG Fact1
+
+
+INSERT use_index=1 D1=x1 D2=y2 D3=z3 Fact1=11 Fact2=110 Fact3=1100
+INSERT D1=x2 D2=y3 D3=z1 Fact1=12 Fact2=120 Fact3=1200
+
+
+
+
+
+
